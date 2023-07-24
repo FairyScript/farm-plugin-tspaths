@@ -1,0 +1,55 @@
+{
+  "name": "farm-plugin-tspaths",
+  "version": "0.0.1",
+  "description": "Support for TypeScript's path mapping in Farm",
+  "main": "./build/index.cjs",
+  "types": "./dist/src/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./build/index.cjs",
+      "import": "./build/index.cjs",
+      "types": "./dist/src/index.d.ts",
+      "require": "./build/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "repository": {
+    "url": "https://github.com/fairyscript/farm-plugin-tspaths",
+    "directory": ".",
+    "type": "git"
+  },
+  "bugs": {
+    "url": "https://github.com/fairyscript/farm-plugin-tspaths/issues"
+  },
+  "author": {
+    "name": "FairyScript",
+    "email": "h@queb.fun"
+  },
+  "scripts": {
+    "build": "rimraf dist && farm build && tsc -p ./tsconfig.build.json",
+    "start": "pnpm run build -w",
+    "prepublishOnly": "npm run build",
+    "type-check": "tsc -p ./tsconfig.build.json --noEmit"
+  },
+  "files": [
+    "build",
+    "dist"
+  ],
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "@farmfe/cli": "^0.5.5",
+    "@farmfe/core": "^0.10.7",
+    "@types/node": "^20.4.4",
+    "jsonc-parser": "^3.2.0",
+    "rimraf": "^5.0.1",
+    "type-fest": "^4.0.0",
+    "typescript": "^5.1.6"
+  },
+  "peerDependencies": {
+    "@farmfe/cli": "^0.5.5",
+    "@farmfe/core": "^0.10.7",
+    "jsonc-parser": "^3.2.0"
+  }
+}
