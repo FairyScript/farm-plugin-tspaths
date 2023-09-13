@@ -18,10 +18,10 @@ To use this package, simply import it in your TypeScript files:
 
 ```typescript
 //farm.config.ts
-import 'farm-plugin-tspaths'
+import { tsPathPlugin } from 'farm-plugin-tspaths'
 
 export default defineConfig({
-  plugins: [...otherPlugins, tsPath],
+  plugins: [...otherPlugins, tsPathPlugin()],
 })
 ```
 
