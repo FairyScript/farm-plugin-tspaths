@@ -40,7 +40,7 @@
   "license": "MIT",
   "devDependencies": {
     "@farmfe/cli": "^0.5.5",
-    "@farmfe/core": "^0.10.7",
+    "@farmfe/core": "^0.12.3",
     "@types/node": "^20.6.0",
     "jsonc-parser": "^3.2.0",
     "rimraf": "^5.0.1",
@@ -48,8 +48,8 @@
     "typescript": "^5.2.2"
   },
   "peerDependencies": {
-    "@farmfe/cli": "^0.5.5",
-    "@farmfe/core": "^0.10.7",
+    "@farmfe/cli": ">=0.5.5",
+    "@farmfe/core": ">=0.10.7",
     "jsonc-parser": "^3.2.0"
   }
 }
