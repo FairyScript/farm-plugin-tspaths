@@ -4,7 +4,7 @@ import { parse } from 'jsonc-parser'
 import fs from 'node:fs'
 import path from 'node:path'
 
-export function tsPathPlugin(): JsPlugin {
+export default function tsPathPlugin(): JsPlugin {
   return {
     name: 'ts-config-plugin',
     config(param) {
@@ -35,7 +35,3 @@ export function tsPathPlugin(): JsPlugin {
     },
   }
 }
-
-/**@deprecated */
-const tsPath = tsPathPlugin()
-export default tsPath
