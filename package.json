@@ -1,6 +1,6 @@
 {
   "name": "farm-plugin-tspaths",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Support for TypeScript's path mapping in Farm",
   "main": "./build/index.cjs",
   "types": "./dist/src/index.d.ts",
