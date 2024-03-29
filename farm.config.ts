@@ -1,8 +1,8 @@
-import type { UserConfig } from '@farmfe/core'
+import { defineConfig } from '@farmfe/core'
+import farmDtsPlugin from '@farmfe/js-plugin-dts'
 
-function defineConfig(config: UserConfig) {
-  return config
-}
+const format = (process.env.FARM_FORMAT as 'esm' | 'cjs') || 'esm'
+const ext = format === 'esm' ? 'mjs' : 'cjs'
 
 import { builtinModules } from 'module'
 
@@ -12,10 +12,10 @@ export default defineConfig({
       index: './src/index.ts',
     },
     output: {
-      path: 'build',
-      entryFilename: '[entryName].cjs',
+      path: `build/${format}`,
+      entryFilename: `[entryName].${ext}`,
       targetEnv: 'node',
-      format: 'cjs',
+      format,
     },
     external: [
       ...builtinModules.map(m => `^${m}$`),
@@ -23,9 +23,9 @@ export default defineConfig({
       'jsonc-parser',
     ],
     partialBundling: {
-      moduleBuckets: [
+      enforceResources: [
         {
-          name: 'index.js',
+          name: 'index',
           test: ['.+'],
         },
       ],
@@ -33,8 +33,14 @@ export default defineConfig({
     minify: false,
     sourcemap: false,
     presetEnv: false,
+    persistentCache: {
+      envs: {
+        FARM_FORMAT: format,
+      },
+    },
   },
   server: {
     hmr: false,
   },
+  plugins: [farmDtsPlugin()],
 })
